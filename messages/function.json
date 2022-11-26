@@ -1,0 +1,14 @@
+{
+    "new": {
+        "description": "Create a new function",
+        "examples": "sfdx copadodev:function:create -n 'functionName' -t 'nodejs'",
+        "flags": {
+            "name": {
+                "description": "Api Name of function"
+            },
+            "type": {
+                "description": "Type of function script"
+            }
+        }
+    }
+}
