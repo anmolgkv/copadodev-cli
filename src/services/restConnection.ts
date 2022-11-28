@@ -22,6 +22,13 @@ export class RestConnections {
         return connection.sobject(type).upsert(records, extIdField);
     }
 
+    public static async delete(type: string, ids: string[]): Promise<any> {
+        const username = await CopadoFiles.getCurrentUser();
+        const connection = await Connection.create({ authInfo: await AuthInfo.create({ username }), connectionOptions: { maxRequest: 1000 } });
+
+        return connection.sobject(type).delete(ids);
+    }
+
     private static stripNamespace(data: string) {
         return COPADO_NAMESPACE ? data : data.replace(/copado__/g, '');;
     }

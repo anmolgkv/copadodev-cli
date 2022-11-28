@@ -34,5 +34,16 @@
         },
         "pushingFunction": "Pushing Function",
         "success": " Function(s) pushed successfully"
+    },
+    "delete": {
+        "description": "Delete function from org and local",
+        "examples": "sfdx copadodev:function:delete -n 'functionName'",
+        "flags": {
+            "name": {
+                "description": "Api Name of function"
+            }
+        },
+        "deleting": "Deleting Function",
+        "success": " Function deleted successfully"
     }
 }

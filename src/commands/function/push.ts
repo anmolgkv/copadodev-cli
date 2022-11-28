@@ -70,7 +70,7 @@ export default class PushFunction extends SfdxCommand {
 
 
     private async asRecord(name: string) {
-        const detail = await readJson(`./copado-data/functions/${name}/details.json`, { throws: false });
+        const detail = await readJson(`./copado-data/functions/${name}/details.json`);
         const fileName = this.getFileName(detail.lang);
         const script = await readFile(`./copado-data/functions/${name}/${fileName}`, 'utf8');
         const parameters = await readFile(`./copado-data/functions/${name}/parameter.json`, 'utf8');

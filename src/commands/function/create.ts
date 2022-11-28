@@ -73,7 +73,7 @@ export default class CreateFunction extends SfdxCommand {
             },
             parameters: [{
                 "name": "parameter",
-                "value": "world"
+                "defaultValue": "world"
             }]
         },
         python: {
@@ -93,7 +93,7 @@ export default class CreateFunction extends SfdxCommand {
             },
             parameters: [{
                 "name": "parameter",
-                "value": "world"
+                "defaultValue": "world"
             }]
         },
         nodejs: {
@@ -113,7 +113,7 @@ export default class CreateFunction extends SfdxCommand {
             },
             parameters: [{
                 "name": "parameter",
-                "value": "world"
+                "defaultValue": "world"
             }]
         }
     };
