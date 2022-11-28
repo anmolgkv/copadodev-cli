@@ -60,8 +60,9 @@ export default class PullTemplate extends SfdxCommand {
             },
             steps: jobSteps.records.map(jobStep => {
                 return {
-                    configJson: jobStep.copado__ConfigJson__c || jobStep.ConfigJson__c || '',
+                    configJson: jobStep.copado__ConfigJson__c || jobStep.ConfigJson__c || '{}',
                     detail: {
+                        id: jobStep.Id,
                         name: jobStep.Name,
                         type: jobStep.copado__Type__c || jobStep.Type__c,
                         order: jobStep.copado__Order__c || jobStep.Order__c,

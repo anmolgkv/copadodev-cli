@@ -19,6 +19,6 @@
             }
         },
         "pushingTemplate": "Pushing templates",
-        "success": " Templates(s) pushed successfully"
+        "success": "pushed successfully"
     }
 }

@@ -35,7 +35,7 @@ export default class PushFunction extends SfdxCommand {
             const chunk = records.slice(i, i + chunkSize);
             const result = await RestConnections.upsert('copado__Function__c', chunk, 'copado__API_Name__c');
             results = results.concat(result);
-            this.ux.setSpinnerStatus(`\nPushed ${i + chunkSize} of ${records.length} functions`)
+            this.ux.setSpinnerStatus(`\nPushed ${results.length} of ${records.length} functions`)
         }
 
         this.ux.stopSpinner();

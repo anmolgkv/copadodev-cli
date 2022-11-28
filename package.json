@@ -56,6 +56,18 @@
     "topics": {
       "function": {
         "description": "Create, pull, push and delete copado functions."
+      },
+      "function:push": {
+        "description": "Push function to org."
+      },
+      "function:pull": {
+        "description": "Pull function from org."
+      },
+      "function:create": {
+        "description": "Create a local function."
+      },
+      "function:delete": {
+        "description": "Delete function from org."
       }
     }
   },
