@@ -39,7 +39,7 @@ DESCRIPTION
   Create a new function
 
 EXAMPLES
-  $ sfdx copadodev:function:create -n 'functionName' -t 'nodejs'
+  $ sfdx function:create -n 'functionName' -t 'nodejs'
 ```
 
 _See code: [src/commands/function/create.ts](https://github.com/anmolgkv/copadodev-cli/blob/v0.0.1/src/commands/function/create.ts)_
@@ -63,7 +63,7 @@ DESCRIPTION
   Delete function from org and local
 
 EXAMPLES
-  $ sfdx copadodev:function:delete -n 'functionName'
+  $ sfdx function:delete -n 'functionName'
 ```
 
 _See code: [src/commands/function/delete.ts](https://github.com/anmolgkv/copadodev-cli/blob/v0.0.1/src/commands/function/delete.ts)_
@@ -87,7 +87,7 @@ DESCRIPTION
   Fetch function from org
 
 EXAMPLES
-  $ sfdx copadodev:function:pull -n 'functionName'
+  $ sfdx function:pull -n 'functionName'
 ```
 
 _See code: [src/commands/function/pull.ts](https://github.com/anmolgkv/copadodev-cli/blob/v0.0.1/src/commands/function/pull.ts)_
@@ -111,7 +111,7 @@ DESCRIPTION
   Push function to org
 
 EXAMPLES
-  $ sfdx copadodev:function:push -n 'functionName'
+  $ sfdx function:push -n 'functionName'
 ```
 
 _See code: [src/commands/function/push.ts](https://github.com/anmolgkv/copadodev-cli/blob/v0.0.1/src/commands/function/push.ts)_

@@ -1,7 +1,7 @@
 {
     "new": {
         "description": "Create a new function",
-        "examples": "sfdx copadodev:function:create -n 'functionName' -t 'nodejs'",
+        "examples": "sfdx function:create -n 'functionName' -t 'nodejs'",
         "flags": {
             "name": {
                 "description": "Api Name of function"
@@ -15,7 +15,7 @@
     },
     "pull": {
         "description": "Fetch function from org",
-        "examples": "sfdx copadodev:function:pull -n 'functionName'",
+        "examples": "sfdx function:pull -n 'functionName'",
         "flags": {
             "name": {
                 "description": "Api Name of function"
@@ -26,7 +26,7 @@
     },
     "push": {
         "description": "Push function to org",
-        "examples": "sfdx copadodev:function:push -n 'functionName'",
+        "examples": "sfdx function:push -n 'functionName'",
         "flags": {
             "name": {
                 "description": "Api Name of function"
@@ -37,7 +37,7 @@
     },
     "delete": {
         "description": "Delete function from org and local",
-        "examples": "sfdx copadodev:function:delete -n 'functionName'",
+        "examples": "sfdx function:delete -n 'functionName'",
         "flags": {
             "name": {
                 "description": "Api Name of function"

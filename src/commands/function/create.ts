@@ -11,7 +11,7 @@ import FunctionSelector from '../../selectors/functionSelector'
 
 Messages.importMessagesDirectory(__dirname);
 
-const messages = Messages.loadMessages('copadodev', 'function');
+const messages = Messages.loadMessages('@anmolgkv/copadodev-cli', 'function');
 
 export default class CreateFunction extends SfdxCommand {
     public static description = messages.getMessage('new.description');

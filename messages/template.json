@@ -1,7 +1,7 @@
 {
     "pull": {
         "description": "Fetch Template and its related steps from org",
-        "examples": "sfdx copadodev:template:pull -n {Template API Name}",
+        "examples": "sfdx template:pull -n {Template API Name}",
         "flags": {
             "name": {
                 "description": "Template API Name"
@@ -12,7 +12,7 @@
     },
     "push": {
         "description": "Push Template and its related steps to org",
-        "examples": "sfdx copadodev:template:push -n {Template API Name}",
+        "examples": "sfdx template:push -n {Template API Name}",
         "flags": {
             "name": {
                 "description": "Template API Name"
