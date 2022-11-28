@@ -2,6 +2,7 @@
   "compilerOptions": {
     "outDir": "lib",
     "rootDir": "src",
+    "baseUrl": "src",
     "module": "commonjs",
     "target": "es2020",
     "lib": ["es2020"],
@@ -9,7 +10,13 @@
     "declaration": true,
     "moduleResolution": "node",
     "alwaysStrict": true,
-    "noUnusedLocals": true
+    "noUnusedLocals": true,
+    "paths": {
+      "@copado_commons/*": ["copado_commons/*"],
+      "@services/*": ["services/*"],
+      "@selectors/*": ["selectors/*"]
+    }
+
   },
   "include": ["./src/**/*.ts"]
 }

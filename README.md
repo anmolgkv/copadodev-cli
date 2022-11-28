@@ -29,7 +29,65 @@ USAGE
 ```
 <!-- usagestop -->
 <!-- commands -->
+* [`sfdx function:create [-n <string>] [-t shell|python|nodejs] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-functioncreate--n-string--t-shellpythonnodejs--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
+* [`sfdx function:pull [-n <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`](#sfdx-functionpull--n-string--u-string---apiversion-string---json---loglevel-tracedebuginfowarnerrorfataltracedebuginfowarnerrorfatal)
 
+## `sfdx function:create [-n <string>] [-t shell|python|nodejs] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Create a new function
+
+```
+USAGE
+  $ sfdx function:create [-n <string>] [-t shell|python|nodejs] [-u <string>] [--apiversion <string>] [--json]
+    [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -n, --name=<value>                                                                Api Name of function
+  -t, --type=(shell|python|nodejs)                                                  Type of function script
+  -u, --targetusername=<value>                                                      username or alias for the target
+                                                                                    org; overrides default target org
+  --apiversion=<value>                                                              override the api version used for
+                                                                                    api requests made by this command
+  --json                                                                            format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+DESCRIPTION
+  Create a new function
+
+EXAMPLES
+  $ sfdx copadodev:function:create -n 'functionName' -t 'nodejs'
+```
+
+_See code: [src/commands/function/create.ts](https://github.com/anmolgkv/copadoDev/blob/v0.0.1/src/commands/function/create.ts)_
+
+## `sfdx function:pull [-n <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]`
+
+Create a new function
+
+```
+USAGE
+  $ sfdx function:pull [-n <string>] [-u <string>] [--apiversion <string>] [--json] [--loglevel
+    trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL]
+
+FLAGS
+  -n, --name=<value>                                                                Api Name of function
+  -u, --targetusername=<value>                                                      username or alias for the target
+                                                                                    org; overrides default target org
+  --apiversion=<value>                                                              override the api version used for
+                                                                                    api requests made by this command
+  --json                                                                            format output as json
+  --loglevel=(trace|debug|info|warn|error|fatal|TRACE|DEBUG|INFO|WARN|ERROR|FATAL)  [default: warn] logging level for
+                                                                                    this command invocation
+
+DESCRIPTION
+  Create a new function
+
+EXAMPLES
+  $ sfdx copadodev:function:create -n 'functionName' -t 'nodejs'
+```
+
+_See code: [src/commands/function/pull.ts](https://github.com/anmolgkv/copadoDev/blob/v0.0.1/src/commands/function/pull.ts)_
 <!-- commandsstop -->
 <!-- debugging-your-plugin -->
 # Debugging your plugin

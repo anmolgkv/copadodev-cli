@@ -9,6 +9,30 @@
             "type": {
                 "description": "Type of function script"
             }
-        }
+        },
+        "validating": "Validating",
+        "success": "Function created successfully"
+    },
+    "pull": {
+        "description": "Fetch function from org",
+        "examples": "sfdx copadodev:function:pull -n 'functionName'",
+        "flags": {
+            "name": {
+                "description": "Api Name of function"
+            }
+        },
+        "fetchingFunction": "Fetching functions",
+        "success": " Function(s) pulled successfully"
+    },
+    "push": {
+        "description": "Push function to org",
+        "examples": "sfdx copadodev:function:push -n 'functionName'",
+        "flags": {
+            "name": {
+                "description": "Api Name of function"
+            }
+        },
+        "pushingFunction": "Pushing Function",
+        "success": " Function(s) pushed successfully"
     }
 }

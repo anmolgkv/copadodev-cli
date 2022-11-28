@@ -1,9 +1,12 @@
 import * as os from 'os';
-import { outputFile } from 'fs-extra';
+import chalk from 'chalk';
 import { Messages } from '@salesforce/core';
 import { AnyJson } from '@salesforce/ts-types';
 import { prompt } from '@oclif/core/lib/cli-ux/prompt';
 import { flags, SfdxCommand } from '@salesforce/command';
+
+import Function from '../../services/function';
+import FunctionSelector from '../../selectors/functionSelector'
 
 
 Messages.importMessagesDirectory(__dirname);
@@ -14,7 +17,6 @@ export default class CreateFunction extends SfdxCommand {
     public static description = messages.getMessage('new.description');
     public static examples = messages.getMessage('new.examples').split(os.EOL);
 
-    protected static requiresUsername = true;
     protected static flagsConfig = {
         name: flags.string({
             char: 'n',
@@ -33,19 +35,23 @@ export default class CreateFunction extends SfdxCommand {
         const type = (this.flags.type || 'shell') as string;
         const templateFunction = this.templates[type];
 
-        await outputFile(`./copado-data/functions/${name}/${this.getFileName(type) }`, templateFunction.script);
-        await outputFile(`./copado-data/functions/${name}/parameter.json`, `${JSON.stringify(templateFunction.parameters, null, 4)}`);
-        await outputFile(`./copado-data/functions/${name}/details.json`, `${JSON.stringify(templateFunction.detail, null, 4)}`);
+        await this.assertFunction(name);
+        await Function.saveInLocal({ name, function: {...templateFunction} });
+
+        this.ux.log(`${chalk.green.bold(messages.getMessage('new.success'))}`);
 
         return templateFunction;
     }
 
 
-    private getFileName(type: string) : string {
-        if (type === 'shell') return 'script.sh';
-        else if (type === 'nodejs') return 'script.js';
-        else if (type === 'python') return 'script.py';
-        else throw new Error(`Invalid type ${type}`);
+    private async assertFunction(name) {
+        this.ux.startSpinner(messages.getMessage('new.validating'));
+        const result = await new FunctionSelector().byApiName(name);
+        this.ux.stopSpinner();
+
+        if (result.length) {
+            throw new Error(`Function ${name} already exists \n run sfdx copadodev:functon:pull to retrieve latest changes`)
+        }
     }
 
 
@@ -62,7 +68,8 @@ export default class CreateFunction extends SfdxCommand {
                 flowHandler: "",
                 description: "",
                 callbackType: "",
-                apexClass: ""
+                apexClass: "",
+                lang: "shell"
             },
             parameters: [{
                 "name": "parameter",
@@ -70,7 +77,7 @@ export default class CreateFunction extends SfdxCommand {
             }]
         },
         python: {
-            script: `print("Hello os.environ['parameter']")`,
+            script: `#!/usr/bin/env python \n print("Hello os.environ['parameter']")`,
             detail: {
                 imageName: "copado-function-core:v1",
                 version: "0.1",
@@ -81,7 +88,8 @@ export default class CreateFunction extends SfdxCommand {
                 flowHandler: "",
                 description: "",
                 callbackType: "",
-                apexClass: ""
+                apexClass: "",
+                lang: "python"
             },
             parameters: [{
                 "name": "parameter",
@@ -89,7 +97,7 @@ export default class CreateFunction extends SfdxCommand {
             }]
         },
         nodejs: {
-            script: 'console.log(`Hello ${process.env.parameter}`);',
+            script: '#!/usr/bin/env node \n console.log(`Hello ${process.env.parameter}`);',
             detail: {
                 imageName: "copado-function-core:v1",
                 version: "0.1",
@@ -100,7 +108,8 @@ export default class CreateFunction extends SfdxCommand {
                 flowHandler: "",
                 description: "",
                 callbackType: "",
-                apexClass: ""
+                apexClass: "",
+                lang: "nodejs"
             },
             parameters: [{
                 "name": "parameter",
