@@ -9,7 +9,7 @@ import FunctionSelector from '../../selectors/functionSelector'
 
 Messages.importMessagesDirectory(__dirname);
 
-const messages = Messages.loadMessages('@anmolgkv/copadodev-cli', 'function');
+const messages = Messages.loadMessages('@copado/copadodev-cli', 'function');
 
 export default class PullFunction extends SfdxCommand {
     public static description = messages.getMessage('pull.description');
