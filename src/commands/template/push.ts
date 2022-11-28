@@ -9,7 +9,7 @@ import { RestConnections } from '../../services/restConnection';
 
 Messages.importMessagesDirectory(__dirname);
 
-const messages = Messages.loadMessages('@copado/copadodev-cli', 'template');
+const messages = Messages.loadMessages('copadodev-cli', 'template');
 
 export default class PushTemplate extends SfdxCommand {
     public static description = messages.getMessage('push.description');
