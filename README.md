@@ -1,6 +1,6 @@
 # copadodev-cli
 
-[![Version](https://img.shields.io/npm/v/copadodev-cli.svg)](https://www.npmjs.com/package/copadodev)
+[![Version](https://img.shields.io/npm/v/copadodev-cli.svg)](https://www.npmjs.com/package/copadodev-cli)
 [![Greenkeeper](https://badges.greenkeeper.io/anmolgkv/copadodev-cli.svg)](https://greenkeeper.io/)
 [![Known Vulnerabilities](https://snyk.io/test/github/anmolgkv/copadodev-cli/badge.svg)](https://snyk.io/test/github/anmolgkv/copadodev-cli)
 [![Downloads/week](https://img.shields.io/npm/dw/copadodev.svg)](https://www.npmjs.com/package/copadodev)
