@@ -26,16 +26,17 @@ export default class PushTemplate extends SfdxCommand {
     public async run(): Promise<AnyJson> {
         let results = [];
         const name = this.flags.name as string;
-        const records = name ? [await this.getLocalFunction(name)] : (await this.getAllFunction());
+        const records = name ? [await this.getLocalTemplate(name)] : (await this.getAllTemplates());
 
         this.ux.startSpinner(messages.getMessage('push.pushingTemplate'));
 
         const chunkSize = 9;
         for (let i = 0; i < records.length; i += chunkSize) {
             const chunk = records.slice(i, i + chunkSize);
-            const result = await RestConnections.upsert('copado__Function__c', chunk, 'copado__API_Name__c');
+            const result = await RestConnections.upsert('copado__JobTemplate__c', chunk, 'copado__ApiName__c');
+
             results = results.concat(result);
-            this.ux.setSpinnerStatus(`\nPushed ${i + chunkSize} of ${records.length} functions`)
+            this.ux.setSpinnerStatus(`\nPushed ${i + chunkSize} of ${records.length} templates`)
         }
 
         this.ux.stopSpinner();
@@ -45,24 +46,24 @@ export default class PushTemplate extends SfdxCommand {
     }
 
 
-    private async getLocalFunction(name: string) {
-        if (!await pathExists(`./copado-data/functions/${name}/parameter.json`)) {
-            throw new Error(`Invalid function ${name}`);
+    private async getLocalTemplate(name: string) {
+        if (!await pathExists(`./copado-data/templates/${name}/detail.json`)) {
+            throw new Error(`Invalid template ${name}`);
         }
 
         return await this.asRecord(name);
     }
 
 
-    private async getAllFunction() {
-        return await Promise.all((await this.getFunctionNames('./copado-data/functions'))
+    private async getAllTemplates() {
+        return await Promise.all((await this.getTemplateNames('./copado-data/templates'))
             .map(async (name) => {
-                return await this.getLocalFunction(name);
+                return await this.getLocalTemplate(name);
             }));
     }
 
 
-    private async getFunctionNames(source): Promise<string[]> {
+    private async getTemplateNames(source): Promise<string[]> {
         return (await readdir(source, { withFileTypes: true }))
             .filter(dirent => dirent.isDirectory())
             .map(dirent => dirent.name);
@@ -70,38 +71,16 @@ export default class PushTemplate extends SfdxCommand {
 
 
     private async asRecord(name: string) {
-        const detail = await readJson(`./copado-data/functions/${name}/details.json`);
-        const fileName = this.getFileName(detail.lang);
-        const script = await readFile(`./copado-data/functions/${name}/${fileName}`, 'utf8');
-        const parameters = await readFile(`./copado-data/functions/${name}/parameter.json`, 'utf8');
+        const detail = await readJson(`./copado-data/templates/${name}/detail.json`);
+        const volumeOption = await readFile(`./copado-data/templates/${name}/volumeOption.json`, 'utf8');
 
         return {
             Name: name,
-            Id: detail.id,
-            copado__API_Name__c: name,
-            copado__Script__c: script,
-            copado__Parameters__c: parameters,
-            copado__ApexClass__c: detail.apexClass,
-            copado__Callback_Type__c: detail.callbackType,
-            copado__Description__c: detail.description,
-            copado__FlowHandler__c: detail.flowHandler,
-            copado__Worker_Size__c: detail.size,
-            copado__Options__c: detail.options,
-            copado__Timeout__c: detail.timeout,
             copado__Type__c: detail.type,
+            copado__ApiName__c: detail.apiName,
             copado__Version__c: detail.version,
-            copado__Image_Name__c: detail.imageName
-        }
-    }
-
-
-    private getFileName(lang: string): string {
-        if (lang === 'nodejs') {
-            return 'script.js';
-        } else if (lang === 'python') {
-            return 'script.py';
-        }
-
-        return 'script.sh';
+            copado__VolumeOptions__c: volumeOption,
+            copado__Description__c: detail.description
+        };
     }
 }
