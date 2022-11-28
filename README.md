@@ -8,7 +8,7 @@
 
 ## How to install
 ```sh-session
-$ sfdx plugins:install copadodev
+$ sfdx plugins:install copadodev-cli
 ```
 
 ## Commands
