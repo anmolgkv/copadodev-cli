@@ -36,7 +36,7 @@ jobs:
 
 workflows:
   version: 2
-  "copadoDev":
+  "copadodev-cli":
     jobs:
       - node-latest
       - cache:

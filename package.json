@@ -1,8 +1,8 @@
 {
-  "name": "copadoDev",
+  "name": "copadodev",
   "version": "0.0.1",
   "author": "AnmolKumar @anmolgkv",
-  "bugs": "https://github.com/anmolgkv/copadoDev/issues",
+  "bugs": "https://github.com/anmolgkv/copadodev-cli/issues",
   "dependencies": {
     "@oclif/core": "^1",
     "@salesforce/command": "^5",
@@ -45,7 +45,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/anmolgkv/copadoDev",
+  "homepage": "https://github.com/anmolgkv/copadodev-cli",
   "keywords": [
     "sfdx-plugin"
   ],
@@ -54,12 +54,12 @@
     "commands": "./lib/commands",
     "bin": "sfdx",
     "topics": {
-      "hello": {
-        "description": "Commands to say hello."
+      "function": {
+        "description": "Create, pull, push and delete copado functions."
       }
     }
   },
-  "repository": "anmolgkv/copadoDev",
+  "repository": "anmolgkv/copadodev-cli",
   "scripts": {
     "build": "tsc -p .",
     "lint": "eslint src/**/*.ts test/**/*.ts",

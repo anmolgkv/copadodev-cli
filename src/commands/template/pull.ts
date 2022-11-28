@@ -9,7 +9,7 @@ import TemplateSelector from '../../selectors/templateSelector'
 
 Messages.importMessagesDirectory(__dirname);
 
-const messages = Messages.loadMessages('copadoDev', 'template');
+const messages = Messages.loadMessages('copadodev', 'template');
 
 export default class PullTemplate extends SfdxCommand {
     public static description = messages.getMessage('pull.description');

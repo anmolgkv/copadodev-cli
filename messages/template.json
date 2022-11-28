@@ -9,5 +9,16 @@
         },
         "fetchingTemplate": "Fetching templates",
         "success": " Templates(s) pulled successfully"
+    },
+    "push": {
+        "description": "Push Template and its related steps to org",
+        "examples": "sfdx copadodev:template:push -n {Template API Name}",
+        "flags": {
+            "name": {
+                "description": "Template API Name"
+            }
+        },
+        "pushingTemplate": "Pushing templates",
+        "success": " Templates(s) pushed successfully"
     }
 }

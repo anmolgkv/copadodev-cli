@@ -9,9 +9,9 @@ import { RestConnections } from '../../services/restConnection';
 
 Messages.importMessagesDirectory(__dirname);
 
-const messages = Messages.loadMessages('copadodev', 'function');
+const messages = Messages.loadMessages('copadodev', 'template');
 
-export default class PushFunction extends SfdxCommand {
+export default class PushTemplate extends SfdxCommand {
     public static description = messages.getMessage('push.description');
     public static examples = messages.getMessage('push.examples').split(os.EOL);
 
@@ -28,7 +28,7 @@ export default class PushFunction extends SfdxCommand {
         const name = this.flags.name as string;
         const records = name ? [await this.getLocalFunction(name)] : (await this.getAllFunction());
 
-        this.ux.startSpinner(messages.getMessage('push.pushingFunction'));
+        this.ux.startSpinner(messages.getMessage('push.pushingTemplate'));
 
         const chunkSize = 9;
         for (let i = 0; i < records.length; i += chunkSize) {
@@ -56,16 +56,16 @@ export default class PushFunction extends SfdxCommand {
 
     private async getAllFunction() {
         return await Promise.all((await this.getFunctionNames('./copado-data/functions'))
-                .map(async (name) => {
-                    return await this.getLocalFunction(name);
-                }));
+            .map(async (name) => {
+                return await this.getLocalFunction(name);
+            }));
     }
 
 
     private async getFunctionNames(source): Promise<string[]> {
         return (await readdir(source, { withFileTypes: true }))
-                .filter(dirent => dirent.isDirectory())
-                .map(dirent => dirent.name);
+            .filter(dirent => dirent.isDirectory())
+            .map(dirent => dirent.name);
     }
 
 
@@ -95,10 +95,10 @@ export default class PushFunction extends SfdxCommand {
     }
 
 
-    private getFileName(lang: string) : string {
-        if(lang === 'nodejs') {
+    private getFileName(lang: string): string {
+        if (lang === 'nodejs') {
             return 'script.js';
-        } else if(lang === 'python') {
+        } else if (lang === 'python') {
             return 'script.py';
         }
 
