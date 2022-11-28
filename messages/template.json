@@ -1,0 +1,13 @@
+{
+    "pull": {
+        "description": "Fetch Template and its related steps from org",
+        "examples": "sfdx copadodev:template:pull -n {Template API Name}",
+        "flags": {
+            "name": {
+                "description": "Template API Name"
+            }
+        },
+        "fetchingTemplate": "Fetching templates",
+        "success": " Templates(s) pulled successfully"
+    }
+}
